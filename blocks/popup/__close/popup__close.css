@@ -1,0 +1,20 @@
+.popup__close {
+  margin: 0 0 4px 1px;
+  align-self: end;
+  cursor: pointer;
+  grid-area: x;
+  transition: opacity .15s ease-in-out;
+}
+
+.popup__close:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__close {
+    margin: 0 0 16px;
+    width: 20px;
+    height: 20px;
+    justify-self: end;
+  }
+}

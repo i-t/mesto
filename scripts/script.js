@@ -9,12 +9,13 @@ let profileEditButton = profile.querySelector('.profile__edit-btn');
 let popupSaveButton = popup.querySelector('.popup__save');
 let popupCloseButton = popup.querySelector('.popup__close');
 
+let pageName = document.querySelector('title');
+console.log(pageName.textContent);
+
 let nameInput = popup.querySelector('.popup__input_type-name');
 let subtextInput = popup.querySelector('.popup__input_type-subtext');
 
-let likeButtons = document.querySelectorAll('.post__like-btn'); // BONUS
-
-console.log(likeButtons);
+let likeButtons = document.querySelectorAll('.post__like-btn');
 
 
 function popupOpen() {
@@ -27,19 +28,21 @@ function popupClose() {
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
+  pageName.textContent = nameInput.value + ' | Mesto Russia';
   profileName.textContent = nameInput.value;
   profileSubtext.textContent = subtextInput.value;
   popupClose();
 }
-
-profileEditButton.addEventListener('click', popupOpen);
-
-popupCloseButton.addEventListener('click', popupClose);
-
-popup.addEventListener('submit', handleFormSubmit);
 
 for (let i = 0; i < likeButtons.length; i++) {
   likeButtons[i].addEventListener('click', function likePost() {
     likeButtons[i].classList.toggle('post__like-btn_pushed');
   });
 }
+
+
+profileEditButton.addEventListener('click', popupOpen);
+
+popupCloseButton.addEventListener('click', popupClose);
+
+popup.addEventListener('submit', handleFormSubmit);

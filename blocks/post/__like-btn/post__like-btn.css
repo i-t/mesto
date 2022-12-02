@@ -1,0 +1,16 @@
+.post__like-btn {
+  align-self: center;
+  justify-self: center;
+  cursor: pointer;
+  transition: opacity .15s ease-in-out;
+  grid-area: like;
+}
+
+.post__like-btn:hover {
+  opacity: .5;
+}
+
+.post__like-btn:active {
+  background-image: url(../images/post__like-icon_active.svg);
+  opacity: 1;
+}
