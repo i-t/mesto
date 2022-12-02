@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto Russia</title>
+  <link rel="stylesheet" href="./pages/page.css">
+</head>
+<body class="root">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип Место">
+  </header>
+  <main class="page">
+    <section class="profile">
+      <div class="profile__avatar"></div>
+      <h1 class="profile__name profile__name_editable">Шляхтин Егор</h1>
+      <p class="profile__subtext">Студент Яндекс Практикум</p>
+      <a class="profile__edit-btn" href="#"></a>
+      <div class="profile__add-btn">
+      <img class="profile__add-icon" src="./images/profile__add-icon.svg"></div>
+    </section>
+    <section class="posts">
+      <div class="post">
+        <img class="post__photo" src="./images/post__winter.jpg" alt="Мороз и солнце">
+        <h2 class="post__title">Мороз и солнце</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+      <div class="post">
+        <img class="post__photo" src="./images/post__helloween.jpg" alt="Хэллоуин">
+        <h2 class="post__title">Хэллоуин</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+      <div class="post">
+        <img class="post__photo" src="./images/post__sky.jpg" alt="Санкт-Петербургское небо">
+        <h2 class="post__title">Под-Петербургское небо</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+      <div class="post">
+        <img class="post__photo" src="./images/post__pesel.jpg" alt="Пёсель">
+        <h2 class="post__title">Пёсель</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+      <div class="post">
+        <img class="post__photo" src="./images/post__parking.jpg" alt="Парковка">
+        <h2 class="post__title">Парковка</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+      <div class="post">
+        <img class="post__photo" src="./images/post__kotyaus.jpg" alt="Котяус">
+        <h2 class="post__title">Котяус</h2>
+        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copiright">© 2022 Mesto Russia</p>
+  </footer>
+  <section class="popup">
+    <div class="popup__container ">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" method="get" action="#">
+        <input class="popup__input popup__input_type-name" type="text" name="name" value="Шляхтин Егор">
+        <input  class="popup__input popup__input_type-subtext" type="text" name="subtext" value="Студент Яндекс Практикум">
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    <img class="popup__close" src="./images/popup__close-icon-.svg" alt="Закрыть">
+    </div>
+  </section>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>
