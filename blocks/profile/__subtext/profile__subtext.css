@@ -6,6 +6,9 @@
   line-height: 26px;
   max-width: 520px;
   align-self: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   grid-area: txt;
 }
 
@@ -13,6 +16,9 @@
   .profile__subtext {
     font-size: 14px;
     padding-bottom: 29px;
+    width: calc(100vw - 38px);
+    min-width: 282px;
     text-align: center;
+    white-space: normal;
   }
 }

@@ -11,8 +11,8 @@ let popupCloseButton = popup.querySelector('.popup__close');
 let pageName = document.querySelector('title');
 console.log(pageName.textContent);
 
-let nameInput = popup.querySelector('.popup__input_edit-name');
-let subtextInput = popup.querySelector('.popup__input_edit-subtext');
+let nameInput = popup.querySelector('.popup__input_edit_name');
+let subtextInput = popup.querySelector('.popup__input_edit_subtext');
 
 let likeButtons = document.querySelectorAll('.post__like-btn');
 

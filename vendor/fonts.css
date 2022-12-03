@@ -5,6 +5,7 @@
     url(../vendor/fonts/Inter-Regular.woff) format('woff'),
     url(../vendor/fonts/Inter-Regular.svg) format('svg');
   font-family: 'Inter';
+  font-weight: 400;
   font-display: block;
 }
 
