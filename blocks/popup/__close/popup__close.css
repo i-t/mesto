@@ -1,6 +1,12 @@
 .popup__close {
   margin: 0 0 4px 1px;
+  width: 32px;
+  height: 32px;
   align-self: end;
+  background-color: transparent;
+  background-image: url(../../../images/popup__close-icon.svg);
+  background-size: cover;
+  border: none;
   cursor: pointer;
   grid-area: x;
   transition: opacity .15s ease-in-out;

@@ -3,6 +3,7 @@
   width: 24px;
   height: 24px;
   align-self: end;
+  background-color: #000;
   background-image: url(../../../images/profile__edit-btn.svg);
   background-position: center;
   background-repeat: no-repeat;

@@ -16,40 +16,40 @@
       <div class="profile__avatar"></div>
       <h1 class="profile__name">Шляхтин Егор</h1>
       <p class="profile__subtext">Студент Яндекс Практикум</p>
-      <a class="profile__edit-btn" href="#"></a>
-      <div class="profile__add-btn"></div>
+      <button type="button" class="profile__edit-btn"></button>
+      <button type="button" class="profile__add-btn"></button>
     </section>
     <section class="posts" aria-label="Галерея">
-      <div class="post">
+      <article class="post">
         <img class="post__photo" src="./images/post__winter.jpg" alt="Мороз и солнце">
         <h2 class="post__title">Мороз и солнце</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
-      <div class="post">
+        <button type="button" class="post__like-btn"></button>
+      </article>
+      <article class="post">
         <img class="post__photo" src="./images/post__helloween.jpg" alt="Хэллоуин">
         <h2 class="post__title">Хэллоуин</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
-      <div class="post">
+        <button type="button" class="post__like-btn"></button>
+      </article>
+      <article class="post">
         <img class="post__photo" src="./images/post__sky.jpg" alt="Санкт-Петербургское небо">
         <h2 class="post__title">Под-Петербургское небо</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
-      <div class="post">
+        <button type="button" class="post__like-btn"></button>
+      </article>
+      <article class="post">
         <img class="post__photo" src="./images/post__pesel.jpg" alt="Пёсель">
         <h2 class="post__title">Пёсель</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
-      <div class="post">
+        <button type="button" class="post__like-btn"></button>
+      </article>
+      <article class="post">
         <img class="post__photo" src="./images/post__parking.jpg" alt="Парковка">
         <h2 class="post__title">Парковка</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
-      <div class="post">
+        <button type="button" class="post__like-btn"></button>
+      </article>
+      <article class="post">
         <img class="post__photo" src="./images/post__kotyaus.jpg" alt="Котяус">
         <h2 class="post__title">Котяус</h2>
-        <img class="post__like-btn" src="./images/post__like-icon.svg" alt="Нравится">
-      </div>
+        <button type="button" class="post__like-btn"></button>
+      </article>
     </section>
   </main>
   <footer class="footer">
@@ -58,14 +58,14 @@
   <section class="popup">
     <div class="popup__container ">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" method="get" action="#">
-        <input class="popup__input popup__input_type-name" type="text" name="name" value="Шляхтин Егор">
-        <input  class="popup__input popup__input_type-subtext" type="text" name="subtext" value="Студент Яндекс Практикум">
+      <form class="popup__form" name='edit-profile' method="get" action="#">
+        <input class="popup__input popup__input_edit-name" type="text" name="name" value="">
+        <input  class="popup__input popup__input_edit-subtext" type="text" name="subtext" value="">
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
-    <img class="popup__close" src="./images/popup__close-icon-.svg" alt="Закрыть">
+    <button type="button" class="popup__close"></button>
   </section>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

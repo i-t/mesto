@@ -6,5 +6,14 @@
   top: 0;
   bottom: 0;
   background-color: rgb(0, 0, 0, .6);
-  z-index: -5;
+  grid-template-areas: '. . x' '. pop .' '. . .';
+  grid-template-columns: minmax(19px, auto) minmax(282px, 430px) minmax(19px, auto);
+  grid-template-rows: 1fr 330px 1fr;
+  z-index: 5;
+}
+
+@media screen and (max-width: 540px) {
+  .popup {
+    grid-template-areas: '. x .' '. pop .' '. . .';
+  }
 }

@@ -2,13 +2,13 @@
   height: 50px;
   width: 150px;
   border-radius: 2px;
+  background-color: #000;
   background-image: url(../../../images/profile__add-icon.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 22px;
   border: #fff solid 2px;
   box-sizing: border-box;
-  color: #fff;
   display: flex;
   justify-content: center;
   cursor: pointer;

@@ -1,4 +1,9 @@
 .post__like-btn {
+  width: 22px;
+  height: 19px;
+  background-color: transparent;
+  background-image: url(../../../images/post__like-icon.svg);
+  border: none;
   align-self: center;
   justify-self: center;
   cursor: pointer;

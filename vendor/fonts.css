@@ -10,12 +10,12 @@
 
 @font-face {
   src: 
-    url(../vendor/fonts/Inter-Bold.otf),
-    url(../vendor/fonts/Inter-Bold.woff2) format('woff2'),
-    url(../vendor/fonts/Inter-Bold.woff) format('woff'),
-    url(../vendor/fonts/Inter-Bold.svg) format('svg');
+    url(../vendor/fonts/Inter-Medium.otf),
+    url(../vendor/fonts/Inter-Medium.woff2) format('woff2'),
+    url(../vendor/fonts/Inter-Medium.woff) format('woff'),
+    url(../vendor/fonts/Inter-Medium.svg) format('svg');
   font-family: 'Inter';
-  font-weight: bold;
+  font-weight: 500;
   font-display: block;
 }
 
