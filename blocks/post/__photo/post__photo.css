@@ -9,6 +9,8 @@
 }
 
 .post__photo:hover {
-  transform: scale(1.25);
+  transform: scale(1.15);
   filter: saturate(1.15);
 }
+
+
