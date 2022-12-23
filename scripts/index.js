@@ -1,10 +1,3 @@
-const profileName = document.querySelector('.profile__name');
-const profileSubtext = document.querySelector('.profile__subtext');
-
-const addButton = document.querySelector('.profile__add-btn');
-const editButton = document.querySelector('.profile__edit-btn');
-
-
 const initialPosts = [
   {
     name: 'Архыз',
@@ -32,92 +25,109 @@ const initialPosts = [
   }
 ]; 
 
-// Раздел с постами
-const postsSection = document.querySelector('.posts'); 
+const postsContainer = document.querySelector('.posts');
 const template = document.querySelector('#post-template');
+const popups = document.querySelectorAll('.popup');
+const post = template.content.querySelector('.post')
 
-// Создание постов с массива
+const pageName = document.querySelector('title');
+const profileName = document.querySelector('.profile__name');
+const profileSubtext = document.querySelector('.profile__subtext');
+
+const popupAddPost = document.querySelector('.popup_add_post');
+const popupOpenPhoto = document.querySelector('.popup_open_photo');
+const popupEditProfile = document.querySelector('.popup_edit_profile');
+
+const addButton = document.querySelector('.profile__add-btn');
+const saveButton = document.querySelector('.popup__save-btn');
+const editButton = document.querySelector('.profile__edit-btn');
+const closeButtons = document.querySelectorAll('.popup__close-btn');
+
+const inputName = document.querySelector('.popup__input_edit_name');
+const inputSubtext = document.querySelector('.popup__input_edit_subtext');
+const inputPostTitle = document.querySelector('.popup__input_add_title');
+const inputPostPhoto = document.querySelector('.popup__input_add_photo');
+
+
 const createPost = (name, link) => {
   const post = template.content.querySelector('.post').cloneNode(true);
-
+  
   post.querySelector('.post__title').textContent = name;
   post.querySelector('.post__photo').alt = `${name}`;
   post.querySelector('.post__photo').src = link;
 
-  post.querySelector('.post__del-btn').addEventListener('click', () => {post.remove();});
-
-  post.querySelector('.post__like-btn').addEventListener('click', () => {
-    post.querySelector('.post__like-btn').classList.toggle('post__like-btn_pushed');
+  // Открыть
+  post.querySelector('.post__photo').addEventListener('click', () => {
+    popupOpenPhoto.querySelector('.popup__photo').src = post.querySelector('.post__photo').src;
+    popupOpenPhoto.querySelector('.popup__caption').textContent = post.querySelector('.post__title').textContent;
+    openPopup(popupOpenPhoto)
   });
-  // Лайк с объявлением переменной
-  // const likeButton = post.querySelector('.post__like-btn');
-  // likeButton.addEventListener('click', () => {
-  //   likeButton.classList.toggle('post__like-btn_pushed')
-  // });
-  
+
+  // Удалить
+  post.querySelector('.post__del-btn').addEventListener('click', () => {
+    post.remove()
+  });
+
+  // Лайкнуть
+  post.querySelector('.post__like-btn').addEventListener('click', () => {
+    post.querySelector('.post__like-btn').classList.toggle('post__like-btn_pushed')
+  });
 
   return post;
 }
 
-// Добавление поста
 const renderPost = (name, link) => { 
-  postsSection.append(createPost(name, link));
+  postsContainer.prepend(createPost(name, link));
 }
 
 initialPosts.forEach(({name, link}) => {
   renderPost(name, link);
 })
 
-
-
-
-// Попап
-const popupAdd = document.querySelector('.popup_add-post');
-const popupEdit = document.querySelector('.popup_edit-profile');
-const popup = document.querySelector('.popup');
-const popupSaveButton = popup.querySelector('.popup__save');
-const closeButton = popup.querySelector('.popup__close');
-
-let pageName = document.querySelector('title');
-console.log(pageName.textContent);
-
-let nameInput = popup.querySelector('.popup__input_edit_name');
-let subtextInput = popup.querySelector('.popup__input_edit_subtext');
-
-
-
-function likePost() {
-  popup.classList.add('post__like-btn_pushed');
-}
-
-function popupOpen() {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-function popupClose() {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  pageName.textContent = nameInput.value + ' | Mesto Russia';
-  profileName.textContent = nameInput.value;
-  profileSubtext.textContent = subtextInput.value;
-  popupClose();
-}
+closeButtons.forEach((x) => {
+  x.addEventListener('click', (e) => {
+    closePopup(e.currentTarget.closest('.popup'));
+  })
+})
 
+// Слушатель кнопки добавления поста
+addButton.addEventListener('click', () => {
+  openPopup(popupAddPost)
+})
 
+// Слушатель сабмита создания поста
+popupAddPost.addEventListener('submit', (e) => {
+  e.preventDefault();
 
+  title = inputPostTitle.value;
+  link = inputPostPhoto.value;
+  renderPost(title, link);
 
+  inputPostTitle.value = '';
+  inputPostPhoto.value = '';
+  closePopup(popupAddPost);
+})
+
+// Слушатель кнопки редактирования профиля
 editButton.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  subtextInput.value = profileSubtext.textContent;
-  popupOpen();
-});
+  inputName.value = profileName.textContent;
+  inputSubtext.value = profileSubtext.textContent;
+  openPopup(popupEditProfile);
+})
 
-
-addButton.addEventListener('click', popupOpen);
-
-closeButton.addEventListener('click', popupClose);
-
-popup.addEventListener('submit', handleFormSubmit);
+// Слушатель сабмита редактирования профиля
+popupEditProfile.addEventListener('submit', (e) => {
+  e.preventDefault();
+  pageName.textContent = inputName.value + ' | Mesto Russia';
+  profileName.textContent = inputName.value;
+  profileSubtext.textContent = inputSubtext.value;
+  closePopup(popupEditProfile);
+})
