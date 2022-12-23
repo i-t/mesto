@@ -1,27 +1,33 @@
 const initialPosts = [
+  
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Эвенкия',
+    link: './images/01_krasavia_evenkya.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Аэропорт Горный',
+    link: './images/09_krasavia-tura-gornyi.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Тайга',
+    link: './images/07_krasavia_taiga.jpg'
+  },
+  
+  // {
+  //   name: 'Эконда',
+  //   link: './images/32_krasavia_tura-ekonda.jpg'
+  // },
+  {
+    name: 'Тутончаны',
+    link: './images/55_krasavia-tutonchani.jpg'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Река Иритка',
+    link: './images/64_krasavia_iritka_river.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'КрасАвиа',
+    link: './images/00_krasavia.jpg'
   }
 ]; 
 
