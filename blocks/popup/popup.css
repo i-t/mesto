@@ -1,5 +1,5 @@
 .popup {
-  display: none;
+  display: grid;
   position: fixed;
   left: 0;
   right: 0;
@@ -7,9 +7,12 @@
   bottom: 0;
   background-color: rgb(0, 0, 0, .6);
   grid-template-areas: '. . x' '. pop .' '. . .';
-  grid-template-columns: minmax(19px, auto) minmax(282px, 430px) minmax(19px, auto);
+  grid-template-columns: minmax(40px, auto) minmax(282px, 430px) minmax(40px, auto);
   grid-template-rows: 1fr 330px 1fr;
   z-index: 5;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity .5s ease;
 }
 
 @media screen and (max-width: 540px) {
