@@ -12,11 +12,6 @@ const initialPosts = [
     name: 'Тайга',
     link: './images/07_krasavia_taiga.jpg'
   },
-  
-  // {
-  //   name: 'Эконда',
-  //   link: './images/32_krasavia_tura-ekonda.jpg'
-  // },
   {
     name: 'Тутончаны',
     link: './images/55_krasavia-tutonchani.jpg'
@@ -113,6 +108,10 @@ addButton.addEventListener('click', () => {
 popupAddPost.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  console.log(inputPostTitle);
+  console.log(inputPostPhoto);
+
+
   title = inputPostTitle.value;
   link = inputPostPhoto.value;
   renderPost(title, link);
@@ -120,6 +119,8 @@ popupAddPost.addEventListener('submit', (e) => {
   inputPostTitle.value = '';
   inputPostPhoto.value = '';
   closePopup(popupAddPost);
+
+  
 })
 
 // Слушатель кнопки редактирования профиля
