@@ -10,6 +10,7 @@
   right: 20px;
   z-index: 3;
   transition: opacity .15s ease-in-out;
+  filter: drop-shadow(0px 0px 1px rgb(0, 0, 1, 0.25));
 }
 
 .post__del-btn:hover {

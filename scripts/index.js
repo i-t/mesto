@@ -1,31 +1,3 @@
-const initialPosts = [
-  
-  {
-    name: 'Эвенкия',
-    link: './images/01_krasavia_evenkya.jpg'
-  },
-  {
-    name: 'Аэропорт Горный',
-    link: './images/09_krasavia-tura-gornyi.jpg'
-  },
-  {
-    name: 'Тайга',
-    link: './images/07_krasavia_taiga.jpg'
-  },
-  {
-    name: 'Тутончаны',
-    link: './images/55_krasavia-tutonchani.jpg'
-  },
-  {
-    name: 'Река Иритка',
-    link: './images/64_krasavia_iritka_river.jpg'
-  },
-  {
-    name: 'КрасАвиа',
-    link: './images/00_krasavia.jpg'
-  }
-]; 
-
 const postsContainer = document.querySelector('.posts');
 const template = document.querySelector('#post-template');
 const popups = document.querySelectorAll('.popup');
@@ -52,14 +24,16 @@ const inputPostPhoto = document.querySelector('.popup__input_add_photo');
 
 const createPost = (name, link) => {
   const post = template.content.querySelector('.post').cloneNode(true);
-  
+  const postPhoto = post.querySelector('.post__photo');
+
   post.querySelector('.post__title').textContent = name;
-  post.querySelector('.post__photo').alt = `${name}`;
-  post.querySelector('.post__photo').src = link;
+  postPhoto.alt = `${name}`;
+  postPhoto.src = link;
 
   // Открыть
-  post.querySelector('.post__photo').addEventListener('click', () => {
-    popupOpenPhoto.querySelector('.popup__photo').src = post.querySelector('.post__photo').src;
+  postPhoto.addEventListener('click', () => {
+    popupOpenPhoto.querySelector('.popup__photo').src = postPhoto.src;
+    popupOpenPhoto.querySelector('.popup__photo').alt = postPhoto.alt;
     popupOpenPhoto.querySelector('.popup__caption').textContent = post.querySelector('.post__title').textContent;
     openPopup(popupOpenPhoto)
   });
@@ -77,6 +51,7 @@ const createPost = (name, link) => {
   return post;
 }
 
+
 const renderPost = (name, link) => { 
   postsContainer.prepend(createPost(name, link));
 }
@@ -86,6 +61,7 @@ initialPosts.forEach(({name, link}) => {
 })
 
 function openPopup(popup) {
+  popup.classList.add('popup_transition_visibility');
   popup.classList.add('popup_opened');
 }
 
@@ -93,8 +69,8 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-closeButtons.forEach((x) => {
-  x.addEventListener('click', (e) => {
+closeButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
     closePopup(e.currentTarget.closest('.popup'));
   })
 })
@@ -108,19 +84,13 @@ addButton.addEventListener('click', () => {
 popupAddPost.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  console.log(inputPostTitle);
-  console.log(inputPostPhoto);
-
-
   title = inputPostTitle.value;
   link = inputPostPhoto.value;
   renderPost(title, link);
 
+  closePopup(popupAddPost);
   inputPostTitle.value = '';
   inputPostPhoto.value = '';
-  closePopup(popupAddPost);
-
-  
 })
 
 // Слушатель кнопки редактирования профиля
@@ -133,7 +103,8 @@ editButton.addEventListener('click', () => {
 // Слушатель сабмита редактирования профиля
 popupEditProfile.addEventListener('submit', (e) => {
   e.preventDefault();
-  pageName.textContent = inputName.value + ' | Mesto Russia';
+  // pageName.textContent = inputName.value + ' | Mesto Russia';
+  pageName.textContent = `${inputName.value}` + ' | Mesto Russia';
   profileName.textContent = inputName.value;
   profileSubtext.textContent = inputSubtext.value;
   closePopup(popupEditProfile);

@@ -33,7 +33,9 @@
 
 /* Popup */
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_opened/popup_opened.css); /*Модификатор блока*/
+@import url(../blocks/popup/_opened/popup_opened.css);
+/* Класс, для исключения анимации при открытии страницы */
+@import url(../blocks/popup/_transition_visibility/popup_transition_visibility.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
@@ -43,4 +45,4 @@
 @import url(../blocks/popup/_open_photo/popup_open_photo.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__photo/popup__photo.css);
-@import url(../blocks/popup/__caption/popup__caption.css); /**/
+@import url(../blocks/popup/__caption/popup__caption.css);
