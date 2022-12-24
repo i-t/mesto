@@ -13,10 +13,6 @@
   </header>
   <main class="main">
 
-
-    
-
-
     <section class="profile">
       <div class="profile__avatar"></div>
       <h1 class="profile__name">Шляхтин Егор</h1>
@@ -25,44 +21,14 @@
       <button type="button" class="profile__add-btn"></button>
     </section>
     <section class="posts" aria-label="Галерея">
-      <!-- <article class="post">
-        <button type="button" class="post__del-btn"></button>
-        <img class="post__photo" src="./images/post__winter.jpg" alt="Мороз и солнце">
-        <h2 class="post__title">Мороз и солнце</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article>
-      <article class="post">
-        <img class="post__photo" src="./images/post__helloween.jpg" alt="Хэллоуин">
-        <h2 class="post__title">Хэллоуин</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article>
-      <article class="post">
-        <img class="post__photo" src="./images/post__sky.jpg" alt="Санкт-Петербургское небо">
-        <h2 class="post__title">Под-Петербургское небо</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article>
-      <article class="post">
-        <img class="post__photo" src="./images/post__pesel.jpg" alt="Пёсель">
-        <h2 class="post__title">Пёсель</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article>
-      <article class="post">
-        <img class="post__photo" src="./images/post__parking.jpg" alt="Парковка">
-        <h2 class="post__title">Парковка</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article>
-      <article class="post">
-        <img class="post__photo" src="./images/post__kotyaus.jpg" alt="Котяус">
-        <h2 class="post__title">Котяус</h2>
-        <button type="button" class="post__like-btn"></button>
-      </article> -->
+
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_edit_profile">
+  <div class="popup popup_edit_profile">
     <div class="popup__container ">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name='edit-profile' method="get" action="#">
@@ -72,9 +38,9 @@
       </form>
     </div>
     <button type="button" class="popup__close-btn"></button>
-  </section>
+  </div>
 
-  <section class="popup popup_add_post">
+  <div class="popup popup_add_post">
     <div class="popup__container ">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name='add-place' method="get" action="#">
@@ -84,27 +50,27 @@
       </form>
     </div>
     <button type="button" class="popup__close-btn"></button>
-  </section>
+  </div>
 
-  <section class="popup popup_open_photo">
+  <div class="popup popup_open_photo">
     <figure class="popup__figure">
       <img class="popup__photo" src="#" alt="">
       <figcaption class="popup__caption"></figcaption>
     </figure>
     <button type="button" class="popup__close-btn"></button>
-  </section>
+  </div>
 
   <template id="post-template">
     <article class="post">
       <button type="button" class="post__del-btn"></button>
       <span class="post__photo-container">
-        <img class="post__photo" src="./images/post__winter.jpg" alt="Мороз и солнце">
+        <img class="post__photo" src="#" alt="">
       </span>
       <h2 class="post__title"></h2>
       <button type="button" class="post__like-btn"></button>
     </article>
   </template>
-
+  <script src="./scripts/initial-posts.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

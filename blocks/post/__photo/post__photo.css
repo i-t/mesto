@@ -1,15 +1,14 @@
 .post__photo {
-  background-color: #000;
-  color: #fff;
   border-radius: 8px 8px 0 0;
   display: block;
   cursor: pointer;
-  transform: scale(1.1);
+  width: 100%;
+  transform: scale(1.15);
   transition: transform .25s, filter .25s ease-in-out;
 }
 
 .post__photo:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
   filter: saturate(1.15);
 }
 

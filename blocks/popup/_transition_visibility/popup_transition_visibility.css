@@ -1,0 +1,5 @@
+.popup_transition_visibility {
+  transition: visibility .5s, opacity .5s ease;
+}
+
+/* Класс, для исключения анимации при открытии страницы */
