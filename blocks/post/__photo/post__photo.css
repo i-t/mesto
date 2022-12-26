@@ -2,7 +2,6 @@
   border-radius: 8px 8px 0 0;
   display: block;
   cursor: pointer;
-  width: 100%;
   transform: scale(1.15);
   transition: transform .25s, filter .25s ease-in-out;
 }
