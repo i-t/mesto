@@ -10,6 +10,8 @@ const profileSubtext = document.querySelector('.profile__subtext');
 const popupAddPost = document.querySelector('.popup_add_post');
 const popupOpenPhoto = document.querySelector('.popup_open_photo');
 const popupEditProfile = document.querySelector('.popup_edit_profile');
+const popupPhoto = popupOpenPhoto.querySelector('.popup__photo');
+const popupCaption = popupOpenPhoto.querySelector('.popup__caption')
 
 const addButton = document.querySelector('.profile__add-btn');
 const saveButton = document.querySelector('.popup__save-btn');
@@ -21,36 +23,28 @@ const inputSubtext = document.querySelector('.popup__input_edit_subtext');
 const inputPostTitle = document.querySelector('.popup__input_add_title');
 const inputPostPhoto = document.querySelector('.popup__input_add_photo');
 
-
 const createPost = (name, link) => {
   const post = template.content.querySelector('.post').cloneNode(true);
   const postPhoto = post.querySelector('.post__photo');
-
-  post.querySelector('.post__title').textContent = name;
+  const postTitle = post.querySelector('.post__title');
+  const postDeleteBtn = post.querySelector('.post__del-btn');
+  const postLikeBtn = post.querySelector('.post__like-btn');
+  
+  postTitle.textContent = name;
   postPhoto.alt = `${name}`;
   postPhoto.src = link;
+  
+  postPhoto.addEventListener('click', () => 
+  popupOpenImage(name, link));
 
-  // Открыть
-  postPhoto.addEventListener('click', () => {
-    popupOpenPhoto.querySelector('.popup__photo').src = postPhoto.src;
-    popupOpenPhoto.querySelector('.popup__photo').alt = postPhoto.alt;
-    popupOpenPhoto.querySelector('.popup__caption').textContent = post.querySelector('.post__title').textContent;
-    openPopup(popupOpenPhoto)
-  });
+  postDeleteBtn.addEventListener('click', () => 
+  post.remove());
 
-  // Удалить
-  post.querySelector('.post__del-btn').addEventListener('click', () => {
-    post.remove()
-  });
-
-  // Лайкнуть
-  post.querySelector('.post__like-btn').addEventListener('click', () => {
-    post.querySelector('.post__like-btn').classList.toggle('post__like-btn_pushed')
-  });
+  postLikeBtn.addEventListener('click', () => 
+  postLikeBtn.classList.toggle('post__like-btn_pushed'));
 
   return post;
 }
-
 
 const renderPost = (name, link) => { 
   postsContainer.prepend(createPost(name, link));
@@ -61,12 +55,18 @@ initialPosts.forEach(({name, link}) => {
 })
 
 function openPopup(popup) {
-  popup.classList.add('popup_transition_visibility');
   popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+
+function popupOpenImage(name, link) {
+  popupPhoto.src = link;
+  popupPhoto.alt = name;
+  popupCaption.textContent = name;
+  openPopup(popupOpenPhoto)
 }
 
 closeButtons.forEach((button) => {
@@ -103,7 +103,6 @@ editButton.addEventListener('click', () => {
 // Слушатель сабмита редактирования профиля
 popupEditProfile.addEventListener('submit', (e) => {
   e.preventDefault();
-  // pageName.textContent = inputName.value + ' | Mesto Russia';
   pageName.textContent = `${inputName.value}` + ' | Mesto Russia';
   profileName.textContent = inputName.value;
   profileSubtext.textContent = inputSubtext.value;
