@@ -1,4 +1,6 @@
 .popup {
+  visibility: hidden;
+  opacity: 0;
   display: grid;
   position: fixed;
   left: 0;
@@ -10,9 +12,7 @@
   grid-template-columns: minmax(40px, auto) minmax(282px, 430px) minmax(40px, auto);
   grid-template-rows: 1fr 330px 1fr;
   z-index: 5;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity .5s ease;
+  transition: visibility .3s, opacity .3s ease;
 }
 
 @media screen and (max-width: 540px) {
