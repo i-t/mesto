@@ -23,4 +23,4 @@ const initialPosts = [
     name: 'КрасАвиа',
     link: './images/00_krasavia.jpg'
   }
-]; 
+];
