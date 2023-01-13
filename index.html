@@ -15,7 +15,7 @@
 
     <section class="profile">
       <div class="profile__avatar"></div>
-      <h1 class="profile__name">Шляхтин Егор</h1>
+      <h1 class="profile__username">Шляхтин Егор</h1>
       <p class="profile__subtext">Студент Яндекс Практикум</p>
       <button type="button" class="profile__edit-btn"></button>
       <button type="button" class="profile__add-btn"></button>
@@ -29,24 +29,28 @@
   </footer>
 
   <div class="popup popup_edit_profile">
-    <div class="popup__container ">
+    <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name='edit-profile' method="get" action="#">
-        <input class="popup__input popup__input_edit_name" type="text" name="name" value="">
-        <input  class="popup__input popup__input_edit_subtext" type="text" name="subtext" value="">
-        <button class="popup__save-btn" type="submit">Сохранить</button>
+      <form name='edit-profile' class="popup__form" method="get" action="#" novalidate>
+        <input id="username" name="username" class="popup__input popup__input_edit_username" type="text" value="" minlength="2" maxlength="40" required>
+        <span class="username-error popup__text-error">Вы пропустили это поле.</span>
+        <input id="subtext" name="subtext" class="popup__input popup__input_edit_subtext" type="text" value="" minlength="2" maxlength="200" required>
+        <span class="subtext-error popup__text-error">Вы пропустили это поле.</span>
+        <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Сохранить</button>
       </form>
     </div>
     <button type="button" class="popup__close-btn"></button>
   </div>
 
   <div class="popup popup_add_post">
-    <div class="popup__container ">
+    <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name='add-place' method="get" action="#">
-        <input class="popup__input popup__input_add_title" type="text" name="name" value="" placeholder="Название">
-        <input  class="popup__input popup__input_add_photo" type="text" name="name" value="" placeholder="Ссылка на картинку">
-        <button class="popup__save-btn" type="submit">Создать</button>
+      <form name='add-place' class="popup__form" method="get" action="#" novalidate>
+        <input id="title" name="title" class="popup__input popup__input_add_title" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="title-error popup__text-error">Вы пропустили это поле.</span>
+        <input id="photo" name="photo" class="popup__input popup__input_add_photo" type="url" value="" placeholder="Ссылка на картинку" required>
+        <span class="photo-error popup__text-error">Введите адрес сайта.</span>
+        <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Создать</button>
       </form>
     </div>
     <button type="button" class="popup__close-btn"></button>
@@ -71,6 +75,7 @@
     </article>
   </template>
   <script src="./scripts/initial-posts.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

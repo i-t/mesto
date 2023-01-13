@@ -1,0 +1,8 @@
+.popup__text-error {
+  visibility: hidden;
+  display: flex;
+  align-self: start;
+  color: #FF0000;
+  font-size: 12px;
+  padding-top: 5px;
+}

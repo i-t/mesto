@@ -1,12 +1,12 @@
 .popup__form {
   display: grid;
   font-size: 14px;
-  grid-template-rows: 75px 57px 98px;
+  grid-template-rows: 74px 20px 37px 30px 68px;
   align-items: end;
 }
 
 @media screen and (max-width: 440px) {
   .popup__form {
-    grid-template-rows: 102px 57px 91px;
+    grid-template-rows: 102px 20px 37px 20px 71px;
   }
 }
