@@ -12,7 +12,7 @@
   grid-area: txt;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 913px) {
   .profile__subtext {
     font-size: 14px;
     padding-bottom: 29px;

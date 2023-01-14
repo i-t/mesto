@@ -12,12 +12,6 @@
 
 @media screen and (max-width: 913px) {
   .profile {
-    padding: 0 24px 11px;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .profile {
     padding: 42px 19px 36px;
     grid-template-areas: ". ava ." ". name edit" "txt txt txt" "add add add";
     grid-template-columns: minmax(28px, 1fr) auto minmax(28px, 1fr);
