@@ -14,13 +14,6 @@
 @media screen and (max-width: 913px) {
   .profile__username {
     max-width: calc(100vw - 410px);
-  }
-}
-
-
-
-@media screen and (max-width: 720px) {
-  .profile__username {
     font-size: 27px;
     line-height: 27px;
     min-width: 226px;

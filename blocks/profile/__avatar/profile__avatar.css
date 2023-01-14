@@ -7,7 +7,7 @@
   grid-area: ava;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 913px) {
   .profile__avatar {
     align-self: start;
   }
