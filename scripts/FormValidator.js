@@ -19,6 +19,7 @@ export class FormValidator {
     this._errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     this._errorElement.textContent = '';
     this._errorElement.classList.remove(config.errorClass);
+    inputElement.classList.remove(config.inputErrorClass);
   }
   
    _checkInputValidity(config, formElement, inputElement) {
