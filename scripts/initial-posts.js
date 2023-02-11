@@ -1,4 +1,4 @@
-const initialPosts = [
+export const initialPosts = [
   {
     name: 'Эвенкия',
     link: './images/01_krasavia_evenkya.jpg'

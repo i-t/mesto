@@ -1,3 +1,7 @@
+import { initialPosts } from './initial-posts.js';
+import { FormValidator } from './FormValidator.js';
+import { Post } from './Post.js';
+
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -7,13 +11,10 @@ const validationConfig = {
   errorClass: 'popup__text-error_visible'
 }; 
 
-
 const postsContainer = document.querySelector('.posts');
-const template = document.querySelector('#post-template');
 const popups = document.querySelectorAll('.popup');
-const post = template.content.querySelector('.post');
-const inputs = document.querySelectorAll(validationConfig.inputSelector);
-const errors = document.querySelectorAll('.popup__text-error');
+
+
 
 const pageName = document.querySelector('title');
 const profileName = document.querySelector('.profile__username');
@@ -22,56 +23,29 @@ const profileSubtext = document.querySelector('.profile__subtext');
 const popupAddPost = document.querySelector('.popup_add_post');
 const popupOpenPhoto = document.querySelector('.popup_open_photo');
 const popupEditProfile = document.querySelector('.popup_edit_profile');
+
 const popupPhoto = popupOpenPhoto.querySelector('.popup__photo');
 const popupCaption = popupOpenPhoto.querySelector('.popup__caption')
 
 const addButton = document.querySelector('.profile__add-btn');
-const saveButton = document.querySelector('.popup__save-btn');
 const editButton = document.querySelector('.profile__edit-btn');
 
 const inputName = document.querySelector('.popup__input_edit_username');
 const inputSubtext = document.querySelector('.popup__input_edit_subtext');
-const inputPostTitle = document.querySelector('.popup__input_add_title');
-const inputPostPhoto = document.querySelector('.popup__input_add_photo');
+
+const addPostValidation = new FormValidator;
+const editProfileValidation = new FormValidator;
+
+addPostValidation.enableValidation(validationConfig, popupAddPost);
+editProfileValidation.enableValidation(validationConfig, popupEditProfile);
 
 
-const createPost = (name, link) => {
-  const post = template.content.querySelector('.post').cloneNode(true);
-  const postPhoto = post.querySelector('.post__photo');
-  const postTitle = post.querySelector('.post__title');
-  const postDeleteBtn = post.querySelector('.post__del-btn');
-  const postLikeBtn = post.querySelector('.post__like-btn');
-
-  postTitle.textContent = name;
-  postPhoto.alt = `${name}`;
-  postPhoto.src = link;
-
-  postPhoto.addEventListener('click', () => 
-  popupOpenImage(name, link));
-
-  postDeleteBtn.addEventListener('click', () => 
-  post.remove());
-
-  postLikeBtn.addEventListener('click', () => 
-  postLikeBtn.classList.toggle('post__like-btn_pushed'));
-  return post;
-}
-
-const renderPost = (name, link) => { 
-  postsContainer.prepend(createPost(name, link));
+const renderPost = (title, photo) => { 
+  const post = new Post(title, photo, popupOpenImage);
+  postsContainer.prepend(post.createPost(title, photo));
 }
 
 
-function resetInputsErrors() {
-  inputPostTitle.value = '';
-  inputPostPhoto.value = '';
-  inputs.forEach((input) => {
-    input.classList.remove(validationConfig.inputErrorClass);
-  })
-  errors.forEach((error) => {
-    error.classList.remove(validationConfig.errorClass);
-  })
-}
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -83,10 +57,10 @@ function openPopup(popup) {
   document.addEventListener('keydown', keyHandlerEcs);
 }
 
-function popupOpenImage(name, link) {
-  popupPhoto.src = link;
-  popupPhoto.alt = name;
-  popupCaption.textContent = name;
+function popupOpenImage(title, photo) { 
+  popupPhoto.src = photo;
+  popupPhoto.alt = `${title}`;
+  popupCaption.textContent = title;
   openPopup(popupOpenPhoto)
 }
 
@@ -96,31 +70,23 @@ function keyHandlerEcs(evt) {
   };
 }
 
-popups.forEach((popup) => {
-  popup.addEventListener('mousedown', function (evt) {
-    if (evt.target.classList.contains('popup_opened') 
-    || (evt.target.classList.contains('popup__close-btn')))
-    {
-      closePopup(popup);
-    }
-  })
-})
+
 
 addButton.addEventListener('click', () => {
-  resetInputsErrors();
+  addPostValidation.resetInputsErrors(validationConfig);
   openPopup(popupAddPost)
 })
 
 popupAddPost.addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = inputPostTitle.value;
-  const link = inputPostPhoto.value;
+  const title = document.querySelector('.popup__input_add_title').value;
+  const link = document.querySelector('.popup__input_add_photo').value;
   renderPost(title, link);
   closePopup(popupAddPost);
 })
 
 editButton.addEventListener('click', () => {
-  resetInputsErrors();
+  editProfileValidation.resetInputsErrors(validationConfig);
   inputName.value = profileName.textContent;
   inputSubtext.value = profileSubtext.textContent;
   openPopup(popupEditProfile);
@@ -134,8 +100,18 @@ popupEditProfile.addEventListener('submit', (e) => {
   closePopup(popupEditProfile);
 })
 
-initialPosts.forEach(({name, link}) => {
-  renderPost(name, link);
+
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', function (evt) {
+    if (evt.target.classList.contains('popup_opened') 
+    || (evt.target.classList.contains('popup__close-btn')))
+    {
+      closePopup(popup);
+    }
+  })
 })
 
-enableValidation(validationConfig);
+initialPosts.forEach(({name, link}) => {
+  renderPost(name, link);
+});
