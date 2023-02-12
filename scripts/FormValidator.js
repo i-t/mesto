@@ -1,73 +1,67 @@
 export class FormValidator {
   constructor(config, formElement) {
-    this._formElement = formElement;
     this._config = config;
+    this._formElement = formElement;
+    
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => !inputElement.validity.valid);
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
-  _showInputError(config, formElement, inputElement) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  _showInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = inputElement.validationMessage;
-    errorElement.classList.add(config.errorClass);
-    inputElement.classList.add(config.inputErrorClass);
+    errorElement.classList.add(this._config.errorClass);
+    inputElement.classList.add(this._config.inputErrorClass);
   }
 
-  _hideInputError(config, formElement, inputElement) {
-    this._errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  _hideInputError(inputElement) {
+    this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     this._errorElement.textContent = '';
-    this._errorElement.classList.remove(config.errorClass);
-    inputElement.classList.remove(config.inputErrorClass);
+    this._errorElement.classList.remove(this._config.errorClass);
+    inputElement.classList.remove(this._config.inputErrorClass);
   }
   
-   _checkInputValidity(config, formElement, inputElement) {
+   _checkInputValidity(inputElement) {
     if (inputElement.validity.valid) {
-      this._hideInputError(config, formElement, inputElement);
+      this._hideInputError(inputElement);
     } else {
-      this._showInputError(config, formElement, inputElement);
+      this._showInputError(inputElement);
     }
   }
 
-  _toggleButtonState(config, formElement, inputList) {
-    this.submitButton = formElement.querySelector(config.submitButtonSelector);
-    if (this._hasInvalidInput(inputList)) {
-      this.submitButton.classList.add(config.inactiveButtonClass);
+  _toggleButtonState() {
+    this.submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
+    if (this._hasInvalidInput()) {
+      this.submitButton.classList.add(this._config.inactiveButtonClass);
       this.submitButton.disabled = true;
     } else {
-      this.submitButton.classList.remove(config.inactiveButtonClass);
+      this.submitButton.classList.remove(this._config.inactiveButtonClass);
       this.submitButton.disabled = false;
     }
   }
 
-  _setEventListeners(config, formElement) {
-    this.inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-    this.submitButton = formElement.querySelector(config.submitButtonSelector);
+  _setEventListeners() {
+    this.submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
 
-    this.inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(config, formElement, inputElement);
-        this._toggleButtonState(config, formElement, this.inputList);
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState(this._inputList);
       })
     })
   }
 
-  enableValidation(config, formElement) {
-    this._setEventListeners(config, formElement);
+  enableValidation() {
+    this._setEventListeners();
   }
 
-  resetInputsErrors(config) {
-    const errors = document.querySelectorAll('.popup__text-error');
-    const inputs = document.querySelectorAll(config.inputSelector);
+  resetInputsErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)});
 
-    const inputPostTitle = document.querySelector('.popup__input_add_title');
-    const inputPostPhoto = document.querySelector('.popup__input_add_photo');
-
-    errors.forEach((error) => {error.classList.remove(config.errorClass)});
-    inputs.forEach((input) => {input.classList.remove(config.inputErrorClass)});
-    
-    inputPostTitle.value = '';
-    inputPostPhoto.value = '';
+    this._toggleButtonState();
   };
 }

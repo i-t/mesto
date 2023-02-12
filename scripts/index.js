@@ -1,6 +1,6 @@
 import { initialPosts } from './initial-posts.js';
 import { FormValidator } from './FormValidator.js';
-import { Post } from './Post.js';
+import { Card } from './Card.js';
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -30,21 +30,34 @@ const popupCaption = popupOpenPhoto.querySelector('.popup__caption')
 const addButton = document.querySelector('.profile__add-btn');
 const editButton = document.querySelector('.profile__edit-btn');
 
+const title = document.querySelector('.popup__input_add_title').value;
+const link = document.querySelector('.popup__input_add_photo').value;
+
 const inputName = document.querySelector('.popup__input_edit_username');
 const inputSubtext = document.querySelector('.popup__input_edit_subtext');
+const inputPostTitle = document.querySelector('.popup__input_add_title');
+const inputPostPhoto = document.querySelector('.popup__input_add_photo');
 
-const addPostValidation = new FormValidator;
-const editProfileValidation = new FormValidator;
-
-addPostValidation.enableValidation(validationConfig, popupAddPost);
-editProfileValidation.enableValidation(validationConfig, popupEditProfile);
+const popupAddValidation = new FormValidator(validationConfig, popupAddPost);
+const popupEditValidation = new FormValidator(validationConfig, popupEditProfile);
 
 
-const renderPost = (title, photo) => { 
-  const post = new Post(title, photo, popupOpenImage);
-  postsContainer.prepend(post.createPost(title, photo));
+popupAddValidation.enableValidation();
+popupEditValidation.enableValidation();
+
+
+const newPost = (title, photo) => {
+  const template = document.querySelector('#post-template')
+  .content.querySelector('.post').cloneNode(true);
+  const post = new Card(title, photo, template, popupOpenImage)
+  .createPost();
+
+  return post
 }
 
+function renderPost(title, photo) {
+  postsContainer.prepend(newPost(title, photo));
+}
 
 
 function closePopup(popup) {
@@ -72,21 +85,22 @@ function keyHandlerEcs(evt) {
 
 
 
-addButton.addEventListener('click', () => {
-  addPostValidation.resetInputsErrors(validationConfig);
-  openPopup(popupAddPost)
-})
-
 popupAddPost.addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = document.querySelector('.popup__input_add_title').value;
-  const link = document.querySelector('.popup__input_add_photo').value;
+
   renderPost(title, link);
   closePopup(popupAddPost);
 })
 
+addButton.addEventListener('click', () => {
+  popupAddValidation.resetInputsErrors();
+  inputPostTitle.value = '';
+  inputPostPhoto.value = '';
+  openPopup(popupAddPost)
+})
+
 editButton.addEventListener('click', () => {
-  editProfileValidation.resetInputsErrors(validationConfig);
+  popupEditValidation.resetInputsErrors();
   inputName.value = profileName.textContent;
   inputSubtext.value = profileSubtext.textContent;
   openPopup(popupEditProfile);
