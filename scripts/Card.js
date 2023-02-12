@@ -18,9 +18,6 @@ export class Card {
     this._postTitle.textContent = this._title;
     this._postPhoto.alt = `${this._title}`;
     this._postPhoto.src = this._photo;
-
-    console.log(this._title);
-    console.log(this._photo);
   }
 
   _removePost() {
