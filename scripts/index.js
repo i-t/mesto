@@ -14,8 +14,6 @@ const validationConfig = {
 const postsContainer = document.querySelector('.posts');
 const popups = document.querySelectorAll('.popup');
 
-
-
 const pageName = document.querySelector('title');
 const profileName = document.querySelector('.profile__username');
 const profileSubtext = document.querySelector('.profile__subtext');
@@ -30,13 +28,13 @@ const popupCaption = popupOpenPhoto.querySelector('.popup__caption')
 const addButton = document.querySelector('.profile__add-btn');
 const editButton = document.querySelector('.profile__edit-btn');
 
-const title = document.querySelector('.popup__input_add_title').value;
-const link = document.querySelector('.popup__input_add_photo').value;
-
 const inputName = document.querySelector('.popup__input_edit_username');
 const inputSubtext = document.querySelector('.popup__input_edit_subtext');
 const inputPostTitle = document.querySelector('.popup__input_add_title');
 const inputPostPhoto = document.querySelector('.popup__input_add_photo');
+
+// const titleValue = inputPostTitle.value;
+// const photoValue = inputPostPhoto.value;
 
 const popupAddValidation = new FormValidator(validationConfig, popupAddPost);
 const popupEditValidation = new FormValidator(validationConfig, popupEditProfile);
@@ -47,9 +45,8 @@ popupEditValidation.enableValidation();
 
 
 const newPost = (title, photo) => {
-  const template = document.querySelector('#post-template')
-  .content.querySelector('.post').cloneNode(true);
-  const post = new Card(title, photo, template, popupOpenImage)
+  const templateSelector = '#post-template';
+  const post = new Card(title, photo, templateSelector, popupOpenImage)
   .createPost();
 
   return post
@@ -87,22 +84,21 @@ function keyHandlerEcs(evt) {
 
 popupAddPost.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  renderPost(title, link);
+  renderPost(inputPostTitle.value, inputPostPhoto.value);
   closePopup(popupAddPost);
 })
 
 addButton.addEventListener('click', () => {
-  popupAddValidation.resetInputsErrors();
   inputPostTitle.value = '';
   inputPostPhoto.value = '';
+  popupAddValidation.resetInputsErrors();
   openPopup(popupAddPost)
 })
 
 editButton.addEventListener('click', () => {
-  popupEditValidation.resetInputsErrors();
   inputName.value = profileName.textContent;
   inputSubtext.value = profileSubtext.textContent;
+  popupEditValidation.resetInputsErrors();
   openPopup(popupEditProfile);
 })
 
