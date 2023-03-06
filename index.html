@@ -12,7 +12,6 @@
     <img class="header__logo" src="./images/logo.svg" alt="логотип Место">
   </header>
   <main class="main">
-
     <section class="profile">
       <div class="profile__avatar"></div>
       <h1 class="profile__username">Шляхтин Егор</h1>
@@ -32,9 +31,9 @@
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name='edit-profile' class="popup__form" method="get" action="#" novalidate>
-        <input id="username" name="username" class="popup__input popup__input_edit_username" type="text" value="" minlength="2" maxlength="40" required>
+        <input id="username" name="name" class="popup__input popup__input_edit_username" type="text" value="" minlength="2" maxlength="40" required>
         <span class="username-error popup__text-error">Вы пропустили это поле.</span>
-        <input id="subtext" name="subtext" class="popup__input popup__input_edit_subtext" type="text" value="" minlength="2" maxlength="200" required>
+        <input id="subtext" name="about" class="popup__input popup__input_edit_subtext" type="text" value="" minlength="2" maxlength="200" required>
         <span class="subtext-error popup__text-error">Вы пропустили это поле.</span>
         <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Сохранить</button>
       </form>
@@ -46,9 +45,9 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form name='add-place' class="popup__form" method="get" action="#" novalidate>
-        <input id="title" name="title" class="popup__input popup__input_add_title" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
+        <input id="title" name="name" class="popup__input popup__input_add_title" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="title-error popup__text-error">Вы пропустили это поле.</span>
-        <input id="photo" name="photo" class="popup__input popup__input_add_photo" type="url" value="" placeholder="Ссылка на картинку" required>
+        <input id="photo" name="link" class="popup__input popup__input_add_photo" type="url" value="" placeholder="Ссылка на картинку" required>
         <span class="photo-error popup__text-error">Введите адрес сайта.</span>
         <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Создать</button>
       </form>
@@ -74,6 +73,6 @@
       <button type="button" class="post__like-btn"></button>
     </article>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
