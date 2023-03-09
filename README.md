@@ -1,19 +1,20 @@
 # Сдача проекта «Mesto: ООП и разбиение на модули»
 
-Проектная работа 7 спринта «JavaScript — непростые концепциим»
+Проектная работа 8 спринта «Mesto: рефакторинг и сборка Вебпаком»
 
 ### Что нового
 
-* Рефакторинг
+* Добавлены классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo, Card
 
-* Добавлены классы Card и FormValidator
+* Добавлен файл .gitignore
+
+* Настроен Webpack
 
 
 
-
-[GitHub Pages](https://i-t.github.io/mesto/)
+<!-- [GitHub Pages](https://i-t.github.io/mesto/) -->
 
 -----
 
 
-_11.02.2023_
+_09.03.2023_
