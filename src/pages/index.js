@@ -1,10 +1,12 @@
-import { Card } from '../scripts/components/Card.js';
-import { FormValidator } from '../scripts/components/FormValidator.js';
-import { PopupWithImage } from '../scripts/components/PopupWithImage.js';
-import { PopupWithForm } from '../scripts/components/PopupWithForm.js';
-import { Section } from '../scripts/components/Section.js';
-import { UserInfo } from '../scripts/components/UserInfo.js';
-import { initialPosts } from '../scripts/utils/initial-posts.js';
+import './index.css';
+
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { Section } from '../components/Section.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { initialPosts } from '../components/utils/initial-posts.js';
 import {
   validationConfig,
   userData,
@@ -15,7 +17,7 @@ import {
   popupEditProfile,
   addButton,
   editButton
-} from '../scripts/utils/constants.js';
+} from '../components/utils/constants.js';
 
 const popupAddValidation = new FormValidator(validationConfig, popupAddPost);
 const popupEditValidation = new FormValidator(validationConfig, popupEditProfile);
