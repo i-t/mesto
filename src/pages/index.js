@@ -15,6 +15,7 @@ import {
   templateSelector,
   popupAddPost,
   popupEditProfile,
+  popupOpenImage,
   addButton,
   editButton
 } from '../components/utils/constants.js';
@@ -22,17 +23,18 @@ import {
 const popupAddValidation = new FormValidator(validationConfig, popupAddPost);
 const popupEditValidation = new FormValidator(validationConfig, popupEditProfile);
 const userInfo = new UserInfo(userData);
+const popupImage = new PopupWithImage(popupOpenImage);
 
 const newPost = (item) => {
-  const post = new Card(item, templateSelector, handleCardClick)
+  const post = new Card(item, templateSelector, popupOpenImage, handleCardClick)
     .createCard();
   return post
 }
 
-const handleCardClick = (name, link, image) => {
-  const popupImage = new PopupWithImage(name, link, image);
-      popupImage.setEventListeners();
-      popupImage.open();
+const handleCardClick = (name, link) => {
+  popupImage.name = name;
+  popupImage.link = link;
+  popupImage.open(name, link);
 }
 
 const popupAdd = new PopupWithForm(popupAddPost, (formData) => {
@@ -44,16 +46,13 @@ const popupEdit = new PopupWithForm(popupEditProfile, (userData) => {
   userInfo.setUserInfo(userData);
 });
 
-const postList = new Section({
-  items: initialPosts,
-  renderer: (item) => {
-    postList.addItem(newPost(item));
-   }
-  }, postsContainer
-)
+const postList = new Section((item) => {
+  postList.addItem(newPost(item));
+}, postsContainer)
 
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+popupImage.setEventListeners();
 
 popupAddValidation.enableValidation();
 popupEditValidation.enableValidation();
@@ -64,10 +63,9 @@ addButton.addEventListener('click', () => {
 })
 
 editButton.addEventListener('click', () => {
-  formUser.name.value = userData.name.textContent;
-  formUser.about.value = userData.about.textContent;
+  userInfo.getUserInfo(formUser);
   popupEditValidation.resetInputsErrors();
   popupEdit.open();
 })
 
-postList.renderItem();
+postList.renderItem(initialPosts);
