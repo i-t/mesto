@@ -1,14 +1,14 @@
+import { validationConfig, userData } from './utils/constants.js';
+
 export class UserInfo {
   constructor ({ name, about }) {
     this._name = name;
     this._about = about;
   }
 
-  getUserInfo({ name, about }) {
-    return {
-      name: name.textContent,
-      about: about.textContent
-    }
+  getUserInfo(formData) {
+    formData.name.value = this._name.textContent;
+    formData.about.value = this._about.textContent;
   }
 
   setUserInfo({ name, about }) {

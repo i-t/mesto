@@ -23,7 +23,7 @@ export const postsContainer = document.querySelector('.posts');
 export const templateSelector = '#post-template';
 
 export const popupAddPost = document.querySelector('.popup_add_post');
-export const popupOpenPhoto = document.querySelector('.popup_open_photo');
+export const popupOpenImage = document.querySelector('.popup_open_photo');
 export const popupEditProfile = document.querySelector('.popup_edit_profile');
 
 export const addButton = document.querySelector('.profile__add-btn');
