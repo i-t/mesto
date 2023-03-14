@@ -26,7 +26,7 @@ const userInfo = new UserInfo(userData);
 const popupImage = new PopupWithImage(popupOpenImage);
 
 const newPost = (item) => {
-  const post = new Card(item, templateSelector, popupOpenImage, handleCardClick)
+  const post = new Card(item, templateSelector, handleCardClick)
     .createCard();
   return post
 }
@@ -63,7 +63,9 @@ addButton.addEventListener('click', () => {
 })
 
 editButton.addEventListener('click', () => {
-  userInfo.getUserInfo(formUser);
+  const userValue = userInfo.getUserInfo();
+  formUser.name.value = userValue.name;
+  formUser.about.value = userValue.about;
   popupEditValidation.resetInputsErrors();
   popupEdit.open();
 })

@@ -8,8 +8,8 @@ export class Section {
     this._container.prepend(element);
   }
 
-  renderItem(item) {
-    item.forEach(item => {
+  renderItem(items) {
+    items.forEach(item => {
       this._renderer(item)
     })
   }
