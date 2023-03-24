@@ -1,14 +1,21 @@
 .post__like-btn {
-  width: 22px;
-  height: 19px;
+  grid-area: like;
+  min-width: 22px;
+  height: 35px;
+  font-size: 13px;
+  line-height: 8px;
   background-color: transparent;
   background-image: url(../../../images/post__like-icon.svg);
+  background-position-x: 50%;
+  background-repeat: no-repeat;
   border: none;
+  display: flex;
   align-self: center;
+  flex-direction: column;
   justify-self: center;
+  justify-content: flex-end;
   cursor: pointer;
   transition: opacity .15s ease-in-out;
-  grid-area: like;
 }
 
 .post__like-btn:hover {

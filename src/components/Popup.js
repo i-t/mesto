@@ -2,6 +2,7 @@ export class Popup {
   constructor(element) {
     this._popup = element;
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._submitButton = this._popup.querySelector('.popup__save-btn');
   }
 
   open() {
@@ -18,6 +19,18 @@ export class Popup {
     if (e.key === "Escape") {
       this.close();
     };
+  }
+
+  setButtonText(text) {
+    this._submitButton.textContent = text;
+    this._submitButton.classList.remove('popup__save-btn_disabled');
+    this._submitButton.disabled = false;
+  }
+
+  waitingResponse() {
+    this.setButtonText('Сохранение...');
+    this._submitButton.classList.add('popup__save-btn_disabled');
+    this._submitButton.disabled = true;
   }
 
   setEventListeners() {
