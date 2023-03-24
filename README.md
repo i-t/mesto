@@ -12,11 +12,11 @@
 
 * Отображение количества лайков карточки
 
-* ОУлучшенный UX всех форм
+* Улучшенный UX всех форм
 
 
 
-[GitHub Pages](https://i-t.github.io/mesto/)
+<!-- [GitHub Pages](https://i-t.github.io/mesto/) -->
 
 -----
 
