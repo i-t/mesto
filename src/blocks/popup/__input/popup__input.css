@@ -4,7 +4,8 @@
   background-color: rgba(0, 0, 0, 0);
   border-bottom: 1px solid rgb(0, 0, 0, .2);
   height: 27px;
-  padding-bottom: 4px;
+  padding: 20px 0 4px;
+  /* width: 100%; */
   /* text-decoration-color: #c4c4c4; */
 }
 

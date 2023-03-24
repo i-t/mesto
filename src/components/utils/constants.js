@@ -9,7 +9,8 @@ export const validationConfig = {
 
 export const userData = {
   name: document.querySelector('.profile__username'),
-  about: document.querySelector('.profile__subtext')
+  about: document.querySelector('.profile__subtext'),
+  avatar: document.querySelector('.profile__avatar')
 }
 
 export const formUser = {
@@ -25,9 +26,12 @@ export const templateSelector = '#post-template';
 export const popupAddPost = document.querySelector('.popup_add_post');
 export const popupOpenImage = document.querySelector('.popup_open_photo');
 export const popupEditProfile = document.querySelector('.popup_edit_profile');
+export const popupEditAvatar = document.querySelector('.popup_edit_avatar');
+export const popupConfirmDelete = document.querySelector('.popup_confirm_delete');
 
 export const addButton = document.querySelector('.profile__add-btn');
 export const editButton = document.querySelector('.profile__edit-btn');
+export const avatarButton = document.querySelector('.profile__avatar-edit-btn');
 
 export const inputPostTitle = document.querySelector('.popup__input_add_title');
 export const inputPostPhoto = document.querySelector('.popup__input_add_photo');

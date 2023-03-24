@@ -10,7 +10,7 @@
   background-color: rgb(0, 0, 0, .6);
   grid-template-areas: '. . x' '. pop .' '. . .';
   grid-template-columns: minmax(20px, auto) minmax(282px, 430px) minmax(20px, auto);
-  grid-template-rows: 1fr 330px 1fr;
+  grid-template-rows: 1fr minmax(181px, max-content) 1fr;
   z-index: 5;
   transition: visibility .3s, opacity .3s ease;
 }

@@ -1,10 +1,8 @@
 .profile__avatar {
-  background-image: url(../../../images/profile__avatar.jpg);
-  background-size: cover;
   border-radius: 50%;
   height: 120px;
   width: 120px;
-  grid-area: ava;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 913px) {

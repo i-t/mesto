@@ -13,9 +13,11 @@
   </header>
   <main class="main">
     <section class="profile">
-      <div class="profile__avatar"></div>
-      <h1 class="profile__username">Шляхтин Егор</h1>
-      <p class="profile__subtext">Студент Яндекс Практикум</p>
+      <button class="profile__avatar-edit-btn">
+        <img class="profile__avatar" src="" alt="Фотография профиля">
+      </button>
+      <h1 class="profile__username"></h1>
+      <p class="profile__subtext"></p>
       <button type="button" class="profile__edit-btn"></button>
       <button type="button" class="profile__add-btn"></button>
     </section>
@@ -41,14 +43,26 @@
     <button type="button" class="popup__close-btn"></button>
   </div>
 
+<div class="popup popup_edit_avatar">
+  <div class="popup__container">
+    <h2 class="popup__title">Обновить аватар</h2>
+    <form name='edit-avatar' class="popup__form" method="get" action="#" novalidate>
+      <input id="avatar" name="avatar" class="popup__input popup__input_edit_avatar" type="url" value="" placeholder="Ссылка на изображение" required>
+      <span class="avatar-error popup__text-error">Введите ссылку на изображение.</span>
+      <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Сохранить</button>
+    </form>
+  </div>
+  <button type="button" class="popup__close-btn"></button>
+</div>
+
   <div class="popup popup_add_post">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form name='add-place' class="popup__form" method="get" action="#" novalidate>
         <input id="title" name="name" class="popup__input popup__input_add_title" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="title-error popup__text-error">Вы пропустили это поле.</span>
-        <input id="photo" name="link" class="popup__input popup__input_add_photo" type="url" value="" placeholder="Ссылка на картинку" required>
-        <span class="photo-error popup__text-error">Введите адрес сайта.</span>
+        <input id="photo" name="link" class="popup__input popup__input_add_photo" type="url" value="" placeholder="Ссылка на изображение" required>
+        <span class="photo-error popup__text-error">Введите ссылку на изображение.</span>
         <button class="popup__save-btn popup__save-btn_disabled" type="submit" disabled>Создать</button>
       </form>
     </div>
@@ -60,6 +74,14 @@
       <img class="popup__photo" src="#" alt="">
       <figcaption class="popup__caption"></figcaption>
     </figure>
+    <button type="button" class="popup__close-btn"></button>
+  </div>
+  
+  <div class="popup popup_confirm_delete">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__save-btn">Да</button>
+    </div>
     <button type="button" class="popup__close-btn"></button>
   </div>
 
