@@ -6,10 +6,27 @@ export class PopupWithConfirmation extends Popup {
     this._remove = remove;
   }
 
-  setEventListeners(id, template) {
+  open(id, template) {
+    super.open();
+    this._id = id;
+    this._template = template;
+  }
+
+  setEventListeners() {
     super.setEventListeners();
     this._submitButton.addEventListener('click', () => {
-      this._remove(id, template);
+      const initialText = this._submitButton.textContent;
+      this._submitButton.textContent = 'Сохранение...';
+      this._remove(this._id, this._template)
+        .then(() => {
+          this.close();
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          this._submitButton.textContent = initialText;
+        })
     });
   }
 }

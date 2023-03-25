@@ -18,8 +18,6 @@ export const formUser = {
   about: document.querySelector('.popup__input_edit_subtext')
 }
 
-export const pageName = document.querySelector('title');
-
 export const postsContainer = document.querySelector('.posts');
 export const templateSelector = '#post-template';
 
@@ -33,5 +31,5 @@ export const addButton = document.querySelector('.profile__add-btn');
 export const editButton = document.querySelector('.profile__edit-btn');
 export const avatarButton = document.querySelector('.profile__avatar-edit-btn');
 
-export const inputPostTitle = document.querySelector('.popup__input_add_title');
-export const inputPostPhoto = document.querySelector('.popup__input_add_photo');
+// export const inputPostTitle = document.querySelector('.popup__input_add_title');
+// export const inputPostPhoto = document.querySelector('.popup__input_add_photo');

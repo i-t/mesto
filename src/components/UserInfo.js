@@ -3,6 +3,7 @@ export class UserInfo {
     this._name = name;
     this._about = about;
     this._avatar = avatar;
+    this._pageName = document.querySelector('title');
   }
 
   getUserInfo() {
@@ -20,8 +21,6 @@ export class UserInfo {
   setUserInfo({ name, about }) {
     this._name.textContent = name;
     this._about.textContent = about;
-
-    document.querySelector('title')
-      .textContent = `${name}` + ' | Mesto Russia';
+    this._pageName.textContent = `${name}` + ' | Mesto Russia';
   }
 }

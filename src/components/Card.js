@@ -1,23 +1,37 @@
 export class Card {
-  constructor(item, templateSelector, userId, handleCardClick, handleAddLike, handleDeleteLike) {
+  constructor(
+    item,
+    userId,
+    templateSelector,
+    popupConfirm,
+    handleCardClick,
+    handleAddLike,
+    handleDeleteLike
+  ) 
+  {
+    this._id = item._id;
     this._name = item.name;
     this._link = item.link;
     this._likes = item.likes;
-    this._id = item._id;
+    this._cardOwnerId = item.owner._id
     this._userId = userId;
-    this._handleCardClick = handleCardClick;
+    
+    this._popupConfirm = popupConfirm;
     this._handleAddLike = handleAddLike;
     this._handleDeleteLike = handleDeleteLike;
+    this._handleCardClick = handleCardClick;
+
     this._isOwner = item.owner._id === userId;
     this._template = document.querySelector(templateSelector)
-      .content.querySelector('.post').cloneNode(true);
+        .content.querySelector('.post').cloneNode(true);
     this._cardPhoto = this._template.querySelector('.post__photo');
     this._cardTitle = this._template.querySelector('.post__title');
     this._likeButton = this._template.querySelector('.post__like-btn');
+    this._deleteButton = this._template.querySelector('.post__del-btn');
   }
 
   _deletableCard(){
-    this._deleteButton = this._template.querySelector('.post__del-btn').remove();
+    
   }
 
   _toggleAddLike() {
@@ -45,14 +59,20 @@ export class Card {
     if (!this._isLiked()) {
       this._handleAddLike(this._id, this._likeButton)
         .then((item) => {
-          this._likes = item.likes
+          this._likes = item.likes;
           this._toggleAddLike();
+        })
+        .catch((err) => {
+          console.log(err);
         })
     } else {
       this._handleDeleteLike(this._id, this._likeButton)
         .then((item) => {
-          this._likes = item.likes
+          this._likes = item.likes;
           this._toggleDeleteLike();
+        })
+        .catch((err) => {
+          console.log(err);
         })
     }
   }
@@ -75,6 +95,14 @@ export class Card {
     this._cardPhoto.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)
     });
+
+    if (this._userId !== this._cardOwnerId) {
+      this._deleteButton.remove();
+    } else {
+      this._deleteButton.addEventListener('click', () => {
+        this._popupConfirm.open(this._id, this._template);
+      });
+    }
   }
 
   createCard() {
